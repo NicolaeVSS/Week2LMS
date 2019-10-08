@@ -129,7 +129,7 @@ class TestLibraryBranchDao {
 				+ " values (15, \"TestName\", \"TestAddress\")";
 		stmt.executeUpdate(sql);
 		
-		ResultSet result = stmt.executeQuery("select count(1) from tbl_library_Branch");
+		ResultSet result = stmt.executeQuery("select count(1) from tbl_library_branch");
 		result.next();
 		int startCount = result.getInt(1);
 		//System.out.println(result.getInt(1));
