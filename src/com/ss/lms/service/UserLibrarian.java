@@ -79,7 +79,7 @@ public class UserLibrarian implements ServiceLibrarian{
 	@Override
 	public ArrayList<BookCopy> readBookCopy(BookCopy bookCopy) {
 		// TODO Auto-generated method stub
-		System.out.println("Reading Book Copies");
+		//System.out.println("Reading Book Copies");
 		ArrayList<BookCopy> copies = null;
 		try {
 			copies = new ArrayList<BookCopy>(bookCopyDao.find(bookCopy));
