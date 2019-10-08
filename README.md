@@ -1,4 +1,4 @@
-# weektwolms
+# Week Two Library Management System
 Build Path Requirements:
 
 apache: commons-lang3-3.9.jar
