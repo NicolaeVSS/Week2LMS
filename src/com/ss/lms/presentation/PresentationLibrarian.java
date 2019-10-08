@@ -172,8 +172,8 @@ public class PresentationLibrarian extends Presentation {
 			}
 			//If the entered value is within the available id's then it will go on to add copies
 			if(bookId <= allBooks.size()) {
-				System.out.println("Book id: " + allBooks.get(bookId -1).getBookId());
-				System.out.println("Branch id: " + branch.getBranchId());
+//				System.out.println("Book id: " + allBooks.get(bookId -1).getBookId());
+//				System.out.println("Branch id: " + branch.getBranchId());
 				addCopies(allBooks.get(bookId-1), branch);
 			}
 		}
