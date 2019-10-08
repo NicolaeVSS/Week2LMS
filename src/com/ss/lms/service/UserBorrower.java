@@ -83,6 +83,13 @@ public class UserBorrower implements ServiceBorrower
     {
         try 
         {
+        	// if we already have the current book loaned from the current library, stop. please.
+        	if(bookLoanDao.find(bookLoan).size() > 0) 
+        	{
+        		System.out.println("You've already taken this book out from this library.\n" + bookLoan.getBook().getTitle() + "\t" + bookLoan.getBranch().getBranchName());
+        	}
+        	
+        	
             // get current book book copies for the specific book loan
             ArrayList<BookCopy> currentBookCopies = bookCopyDao.find(new BookCopy(
                     bookLoan.getBook(),
