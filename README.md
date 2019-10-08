@@ -14,7 +14,7 @@ Run from Main.java in the default package.
 # Jecaro's Contributions:
 
 Created Borrower Presentation, Service, and DAO's for Borrower and BookLoan.
-
+Also created Entites.
 
 
 # Nicolae's Contributions:
