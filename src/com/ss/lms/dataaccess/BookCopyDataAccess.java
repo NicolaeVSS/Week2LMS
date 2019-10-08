@@ -148,10 +148,17 @@ public class BookCopyDataAccess extends DataAccess<BookCopy> {
 			//System.out.println(query);
 			ResultSet resultBook = query.executeQuery();
 			resultBook.next();
+			sql = "select * from tbl_library_branch where branchId = ?;";
+			query = con.prepareStatement(sql);
+			query.setInt(1, result.getInt(2));
+
+			//System.out.println(query);
+			ResultSet resultBranch = query.executeQuery();
+			resultBranch.next();
 			Book book = new Book(resultBook.getInt(1),resultBook.getString(2), author, publisher);
-			LibraryBranch branch = new LibraryBranch(result.getInt(1),result.getString(2),result.getString(3));
+			LibraryBranch branch = new LibraryBranch(resultBranch.getInt(1),resultBranch.getString(2),resultBranch.getString(3));
 			BookCopy bookCopy = new BookCopy(book, branch, result.getInt(3));
-			bookCopyList.add(bookCopy); 
+			bookCopyList.add(bookCopy);  
 		}	
     	return bookCopyList;
     }

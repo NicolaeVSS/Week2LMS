@@ -70,7 +70,7 @@ public class PresentationBorrower extends Presentation {
                     return;
                 }
                 if (branchId < i && branchId > 0) {
-                    borrowBookCheckOut(borrower, branches.get(0));
+                    borrowBookCheckOut(borrower, branches.get(branchId - 1));
                     check = false;
                 }
             }
@@ -146,10 +146,13 @@ public class PresentationBorrower extends Presentation {
             // Choosing which book you want to add copies of
             System.out.println("Choose your Book:");
             int i = 1;
-            
+            //System.out.println("BranchId: " + libraryBranch.getBranchId());
             for (BookCopy aBook : allBooks) {
-                System.out.println(i + ") " + aBook.getBook().getTitle() + " by " + aBook.getBook().getAuthor().getAuthorName());
-                i++;
+            	//System.out.println(aBook.getBranch().getBranchId());
+            	if(aBook.getBranch().getBranchId() == libraryBranch.getBranchId()) {
+	                System.out.println(i + ") " + aBook.getBook().getTitle() + " by " + aBook.getBook().getAuthor().getAuthorName());
+	                i++;
+            	}
             }
             System.out.println(i + ") Quit to previous");
             System.out.println("Enter your book:");
