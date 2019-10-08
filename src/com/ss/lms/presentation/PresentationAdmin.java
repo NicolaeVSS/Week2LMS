@@ -882,7 +882,6 @@ public class PresentationAdmin extends Presentation
 			return null;
 		}
 		userBookLoan.getBook().setBookId(allIntegerInput);
-		System.out.println("setting bookId: " + userBookLoan.getBook().getBookId());
 		
 		// Getting Branch ID
 		allIntegerInput = getIntegerFieldFromUser("Branch ID");
@@ -891,7 +890,6 @@ public class PresentationAdmin extends Presentation
 			return null;
 		}
 		userBookLoan.getBranch().setBranchId(allIntegerInput);
-		System.out.println("setting branchId: " + userBookLoan.getBranch().getBranchId());
 		
 		// Getting card number
 		allIntegerInput = getIntegerFieldFromUser("Card Number");
@@ -900,7 +898,6 @@ public class PresentationAdmin extends Presentation
 			return null;
 		}
 		userBookLoan.getBorrower().setCardNo(allIntegerInput);
-		System.out.println("setting cardNo: " + userBookLoan.getBorrower().getCardNo());
 		
 		// cannot change dateOut
 		userBookLoan.setDateOut(Date.valueOf("0001-01-01"));
