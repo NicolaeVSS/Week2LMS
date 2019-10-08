@@ -11,10 +11,12 @@ import com.ss.lms.entity.*;
 public class LibraryBranchDataAccess extends DataAccess<LibraryBranch> {
 	public LibraryBranchDataAccess() throws SQLException, ClassNotFoundException {
 		super();
+		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void insert(LibraryBranch entity) throws SQLException {
+		// TODO Auto-generated method stub
 		PreparedStatement query;
 		String sql;
 		//query = con.createStatement();
@@ -24,7 +26,7 @@ public class LibraryBranchDataAccess extends DataAccess<LibraryBranch> {
 		query = con.prepareStatement(sql);
 		query.setInt(1, entity.getBranchId());
 		query.setString(2, entity.getBranchName());
-		query.setString(3, entity.getBranchAddress());
+		query.setString(3, entity.getBranchName());
 		
 		query.executeUpdate();
 		
@@ -32,6 +34,7 @@ public class LibraryBranchDataAccess extends DataAccess<LibraryBranch> {
 
 	@Override
 	public ArrayList<LibraryBranch> find(LibraryBranch entity) throws SQLException {
+		// TODO Auto-generated method stub
 		String sql;
 		int findBranchId = entity.getBranchId();
 		String findBranchName = entity.getBranchName();
@@ -51,7 +54,11 @@ public class LibraryBranchDataAccess extends DataAccess<LibraryBranch> {
 		if(findBranchAddress == "%") {
 			strBranchAddress = ("branchAddress LIKE ?");
 		}
-
+		//System.out.println("Hello2");
+//		System.out.println("select * from tbl_book_copy "
+//				+ "where " + findBranchId 
+//				+ "and " + findBranchName 
+//				+ "and " + findBranchAddress);
 		
 		sql = "select * from tbl_library_branch "
 				+ "where " + strBranchId 
@@ -70,11 +77,29 @@ public class LibraryBranchDataAccess extends DataAccess<LibraryBranch> {
 
 	@Override
 	public void update(LibraryBranch entity) throws SQLException {
+		// TODO Auto-generated method stub
 		PreparedStatement query;
 		String sql;
 		
 		String newBranchName = entity.getBranchName();
 		String newBranchAddress = entity.getBranchAddress();
+//		
+//		sql = "select * from tbl_library_branch "
+//				+ "where branchId = ?";
+//		query = con.prepareStatement(sql);
+//		query.setInt(1, entity.getBranchId());
+//		
+//		ResultSet result = query.executeQuery();
+		
+//		if(newBranchName == "%") {
+//			newTitle = result.getString(2);
+//		}
+//		if(authorId == -1) {
+//			authorId = result.getInt(3);
+//		}
+//		if(publisherId == -1) {
+//			publisherId = result.getInt(4);
+//		}
 		
 		sql = "update tbl_library_branch "
 				+ "set branchName = ?, "
@@ -91,6 +116,7 @@ public class LibraryBranchDataAccess extends DataAccess<LibraryBranch> {
 
 	@Override
 	public void delete(LibraryBranch entity) throws SQLException {
+		// TODO Auto-generated method stub
 		PreparedStatement query;
 		String sql;
 		sql = "delete from tbl_library_branch where branchId = ?";
