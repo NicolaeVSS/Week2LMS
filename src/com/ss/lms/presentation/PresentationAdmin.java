@@ -927,7 +927,7 @@ public class PresentationAdmin extends Presentation
 				System.out.println("Input not recognized." + year);
 			}
 		}
-		while(year < 0 || year > 10000);
+		while(year < 1 || year > 10000);
 		
 		// get month
 		Integer month;
@@ -950,7 +950,7 @@ public class PresentationAdmin extends Presentation
 				System.out.println("Input not recognized." + month);
 			}
 		}
-		while(month < 0 || month > 13);
+		while(month < 1 || month > 13);
 		
 		// get day
 		Integer day; 
@@ -966,7 +966,7 @@ public class PresentationAdmin extends Presentation
 				userBookLoan.setDueDate(Date.valueOf("0001-01-01"));
 				return userBookLoan;
 			}
-			if(day < 0 || day > 31) 
+			if(day < 1 || day > 31) 
 			{
 				System.out.println("Input not recognized." + day);
 			}

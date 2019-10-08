@@ -3,6 +3,7 @@ import java.util.Scanner;
 
 import com.ss.lms.presentation.Presentation;
 import com.ss.lms.presentation.PresentationAdmin;
+import com.ss.lms.presentation.PresentationBorrower;
 import com.ss.lms.presentation.PresentationLibrarian;
 
 public class Main {
@@ -34,7 +35,7 @@ public class Main {
 					check = true;
 					break;
 				case "3":
-					//pres = new PresentationBorrower();
+					pres = new PresentationBorrower();
 					check = true;
 					break;
 				case "4":
