@@ -5,35 +5,31 @@ import com.ss.lms.entity.*;
 
 public class BookLoanDataAccess extends DataAccess<BookLoan> 
 {
-    public BookLoanDataAccess() throws SQLException, ClassNotFoundException 
-    {
-        super();
-        // TODO Auto-generated constructor stub
-    }
-    
-    /*
-     * Adding book to borrower
-     * */
-    @Override
-    public void insert(BookLoan entity) throws SQLException 
-    {
-        // TODO Auto-generated method stub
-        PreparedStatement query;
-        String sql;
-        sql = "insert into tbl_book_loans (bookId, branchId, cardNo, dateOut, dueDate) values (?,?,?,now(),now() + INTERVAL 7 DAY)";
-        
-        query = con.prepareStatement(sql);
-        query.setInt(1,entity.getBook().getBookId());
-        query.setInt(2,entity.getBranch().getBranchId());
-        query.setInt(3,entity.getBorrower().getCardNo());
 
-        query.executeUpdate();
+	public BookLoanDataAccess() throws SQLException, ClassNotFoundException {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	/*
+	 * Adding book to borrower
+	 * */
+	@Override
+	public void insert(BookLoan entity) throws SQLException {
+		// TODO Auto-generated method stub
+		PreparedStatement query;
+		String sql;
+		sql = "insert into tbl_book_loans (bookId, branchId, cardNo, dateOut, dueDate) values (?,?,?,now(),now() + INTERVAL 7 DAY)";
+				 
+		
+		query = con.prepareStatement(sql);
+		query.setInt(1,entity.getBook().getBookId());
+		query.setInt(2,entity.getBranch().getBranchId());
+		query.setInt(3,entity.getBorrower().getCardNo());
+		query.executeUpdate();
+	}
 
-    }
-    
-    @Override
-    public ArrayList<BookLoan> find(BookLoan entity) throws SQLException 
-    {
+	@Override
+	public ArrayList<BookLoan> find(BookLoan entity) throws SQLException {
         PreparedStatement query;
         String sql;
         ResultSet result;
@@ -78,71 +74,57 @@ public class BookLoanDataAccess extends DataAccess<BookLoan>
         query.setInt(3,entity.getBook().getBookId());
         query.setDate(4, entity.getDateOut());
         query.setDate(5, entity.getDueDate());
+        result = query.executeQuery();
 
         result = query.executeQuery();
         
         return packageResultSet(result) ;
-    }
-    
-    /*
-     * Return book
-     * */
-    @Override
-    public void update(BookLoan entity) throws SQLException {
-        PreparedStatement query;
-        String sql;
-        
-        sql = "update tbl_book_loans set "
-        		+ "dateOut = ?,"
-        		+ "dueDate = ? "
-        		+ "where bookId = ? and branchId = ? and cardno = ?";
-        
-        
-        query = con.prepareStatement(sql);
-        query.setDate(1, entity.getDateOut());
-        query.setDate(2, entity.getDueDate());
-        query.setInt(3,entity.getBook().getBookId());
-        query.setInt(4,entity.getBranch().getBranchId());   
-        query.setInt(5,entity.getBorrower().getCardNo());   
-        query.executeUpdate();
-    }
-    
-    @Override
-    public void delete(BookLoan entity) throws SQLException 
-    {
+	}
+	/*
+	 * Return book
+	 * */
+	@Override
+	public void update(BookLoan entity) throws SQLException {
+		PreparedStatement query;
+		String sql;
+		
+		sql = "update tbl_book_copies set noOfCopies = noOfCopies+1 where branchId = ? and bookId = ?";
+		query = con.prepareStatement(sql);
+		query.setInt(1,entity.getBranch().getBranchId());
+		query.setInt(2,entity.getBook().getBookId());	
+
+		query.executeUpdate();
+		
+		delete(entity);
+	}
+	
+	@Override
+	public void delete(BookLoan entity) throws SQLException {
         String sqlBookId = "bookId = ?";
         String sqlBranchId = " branchId = ?";
         String sqlCardNo = "cardNo = ?";
-        
-        if(entity.getBook().getBookId() == -1) 
-        {
-        	sqlBookId = "bookId > ?";
+
+        if(entity.getBook().getBookId() == -1) {
+            sqlBookId = "bookId > ?";
         }
-        if(entity.getBranch().getBranchId() == -1) 
-        {
-        	sqlBranchId = "branchId > ?";
+
+        if(entity.getBranch().getBranchId() == -1){
+            sqlBranchId = "branchId > ?";
         }
-        if(entity.getBorrower().getCardNo() == -1) 
-        {
-        	sqlCardNo = "cardNo > ?";
+
+        if(entity.getBorrower().getCardNo() == -1){
+            sqlCardNo = "cardNo > ?";
         }
 
         PreparedStatement query;
         String sql = "delete from tbl_book_loans where " + sqlBookId 
-        		+ " and " + sqlBranchId
-        		+ " and " + sqlCardNo;
-        
-        
+                + " and " + sqlBranchId
+                + " and " + sqlCardNo;
+
         query = con.prepareStatement(sql);
         query.setInt(1,entity.getBook().getBookId());
         query.setInt(2,entity.getBranch().getBranchId());
         query.setInt(3,entity.getBorrower().getCardNo());
-        
-        System.out.println("bookId to del:" + entity.getBook().getBookId());
-        System.out.println("branchId to del:" + entity.getBranch().getBranchId());
-        System.out.println("card to del:" + entity.getBorrower().getCardNo());
-        System.out.println(query.toString());
-        
         query.executeUpdate();
     }
     
