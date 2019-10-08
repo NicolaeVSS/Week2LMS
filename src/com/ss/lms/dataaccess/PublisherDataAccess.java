@@ -27,7 +27,7 @@ public class PublisherDataAccess extends DataAccess<Publisher>
 		query.setString(2, entity.getPublisherName());
 		query.setString(3, entity.getPublisherAddress());
 		query.setString(4, entity.getPublisherPhone());
-		
+
 		query.executeUpdate();
 	}
 
@@ -44,7 +44,7 @@ public class PublisherDataAccess extends DataAccess<Publisher>
 					+ "WHERE publisherId > ? " // index 1
 					+ "AND publisherName LIKE ? " // index 2
 					+ "AND publisherAddress LIKE ? " // index 3
-					+ "AND publisherAddress LIKE ?;"; // index 4
+					+ "AND publisherPhone LIKE ?;"; // index 4
 		}
 		else 
 		{
@@ -52,7 +52,7 @@ public class PublisherDataAccess extends DataAccess<Publisher>
 					+ "WHERE publisherId = ? " // index 1
 					+ "AND publisherName LIKE ? " // index 2
 					+ "AND publisherAddress LIKE ? " // index 3
-					+ "AND publisherAddress LIKE ?;"; // index 4
+					+ "AND publisherPhone LIKE ?;"; // index 4
 		}
 		
 		query = con.prepareStatement(sql);

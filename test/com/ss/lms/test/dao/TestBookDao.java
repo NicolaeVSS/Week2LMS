@@ -16,8 +16,37 @@ class TestBookDao {
 	static void tearDownAfterClass() throws Exception {
 	}
 
+
 	@Test
-	final void test() {
+	final void testInsert() 
+	{
+		
+		
+		fail("Not yet implemented"); // TODO
+	}
+
+	@Test
+	final void testFind() 
+	{
+		
+		
+		fail("Not yet implemented"); // TODO
+	}
+
+	@Test
+	final void testUpdate() 
+	{
+		
+		
+		fail("Not yet implemented"); // TODO
+	}
+	
+
+	@Test
+	final void testDelete() 
+	{
+		
+		
 		fail("Not yet implemented"); // TODO
 	}
 

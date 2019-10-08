@@ -41,7 +41,6 @@ class TestLibrarianService {
 	
 	@BeforeEach
 	public void beforeTest() {
-		System.out.println("Hello.");
 		try {
 			librarian = new UserLibrarian(new BookDataAccess(), new LibraryBranchDataAccess(), new BookCopyDataAccess());
 		} catch (ClassNotFoundException e) {
