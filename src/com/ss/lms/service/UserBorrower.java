@@ -87,6 +87,7 @@ public class UserBorrower implements ServiceBorrower
         	if(bookLoanDao.find(bookLoan).size() > 0) 
         	{
         		System.out.println("You've already taken this book out from this library.\n" + bookLoan.getBook().getTitle() + "\t" + bookLoan.getBranch().getBranchName());
+        		return;
         	}
         	
         	
