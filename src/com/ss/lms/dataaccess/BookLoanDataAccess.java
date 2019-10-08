@@ -8,7 +8,6 @@ public class BookLoanDataAccess extends DataAccess<BookLoan>
     public BookLoanDataAccess() throws SQLException, ClassNotFoundException 
     {
         super();
-        // TODO Auto-generated constructor stub
     }
     
     /*
@@ -17,7 +16,6 @@ public class BookLoanDataAccess extends DataAccess<BookLoan>
     @Override
     public void insert(BookLoan entity) throws SQLException 
     {
-        // TODO Auto-generated method stub
         PreparedStatement query;
         String sql;
         sql = "insert into tbl_book_loans (bookId, branchId, cardNo, dateOut, dueDate) values (?,?,?,now(),now() + INTERVAL 7 DAY)";
@@ -48,6 +46,7 @@ public class BookLoanDataAccess extends DataAccess<BookLoan>
         String strCard = "cardNo = ? ";
         String strDueDate = "dueDate = ? ";
         String strDateOut = "dateOut = ? ";
+        
         if(cardNo == -1) {
             strCard = "cardNo > ? ";
         }
@@ -81,7 +80,7 @@ public class BookLoanDataAccess extends DataAccess<BookLoan>
 
         result = query.executeQuery();
         
-        return packageResultSet(result) ;
+        return packageResultSet(result);
     }
     
     /*

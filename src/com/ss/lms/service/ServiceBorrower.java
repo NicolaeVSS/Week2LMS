@@ -25,7 +25,7 @@ public interface ServiceBorrower
 
 	public ArrayList<LibraryBranch> readLibraryBranch(LibraryBranch libraryBranch);
 	
-	public ArrayList<UserBorrower> readBorrower(UserBorrower borrower);
+	public ArrayList<Borrower> readBorrower(Borrower borrower);
 
 	public ArrayList<BookLoan> readBookLoan(BookLoan bookLoan);
 
@@ -46,4 +46,5 @@ public interface ServiceBorrower
 	 *************************************************/
 
 	public void returnBookLoan(BookLoan bookLoan);
+
 }

@@ -5,10 +5,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import com.ss.lms.entity.Borrower;
-public class BorrowerDataAccess extends DataAccess<Borrower>  {
-    public BorrowerDataAccess() throws SQLException, ClassNotFoundException {
+public class BorrowerDataAccess extends DataAccess<Borrower>  
+{
+    public BorrowerDataAccess() throws SQLException, ClassNotFoundException
+    {
         super();
     }
+    
     @Override
     public void insert(Borrower entity) throws SQLException {
         PreparedStatement query;
@@ -23,6 +26,7 @@ public class BorrowerDataAccess extends DataAccess<Borrower>  {
         
         query.executeUpdate();
     }
+    
     @Override
     public ArrayList<Borrower> find(Borrower entity) throws SQLException {
         //ArrayList<Borrower> borrower =  new ArrayList<>();
@@ -35,12 +39,10 @@ public class BorrowerDataAccess extends DataAccess<Borrower>  {
         	strCardNo = " cardNo > ? ";
         }
         
-        
         String sql = "select * from tbl_borrower where " + strCardNo;
-                
+        
         query = con.prepareStatement(sql);
         query.setInt(1, entity.getCardNo());
-        
         result = query.executeQuery();  
                     
         return packageResultSet(result);
@@ -59,6 +61,7 @@ public class BorrowerDataAccess extends DataAccess<Borrower>  {
         query.setInt(4,entity.getCardNo());
         query.executeUpdate();
     }
+    
     @Override
     public void delete(Borrower entity) throws SQLException {
         PreparedStatement query;
@@ -69,6 +72,7 @@ public class BorrowerDataAccess extends DataAccess<Borrower>  {
         query.setInt(1,entity.getCardNo());
         query.executeUpdate();
     }
+    
     @Override
     public ArrayList<Borrower> packageResultSet(ResultSet result) throws SQLException {
         ArrayList<Borrower>  borrowerSet = new ArrayList<>();
