@@ -25,7 +25,7 @@ Created Admin Presentation, Service, and DAO's for Author and Publisher.
 
 
 
-# Tim's Contribution:
+# Tim's Contributions:
 
 Created Librarian Presentation, Service, and DAO's for LibraryBranch, BookCopy, and Book.
 
